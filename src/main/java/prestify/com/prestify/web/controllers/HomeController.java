@@ -82,7 +82,7 @@ public class HomeController {
     public String showOfferDetails(@PathVariable Long id, Model model) {
         Offer offer = offerService.getOffreById(id);
         model.addAttribute("offer", offer);
-        return "clients/mm";  // Assurez-vous que le nom du template est correct
+        return "client/offer-details";
     }
 
 @GetMapping("/client/offer/filtrer")

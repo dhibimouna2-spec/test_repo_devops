@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category - Prestify</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-briefcase text-orange-500 text-2xl"></i>
+                <span class="text-xl font-bold text-gray-800">Prestify</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="/fournisseurindex" class="text-gray-700 hover:text-orange-500">Dashboard</a>
+                <form action="/logout" method="post" style="display:inline;">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="max-w-2xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Edit Category</h1>
+            <p class="text-gray-600 mt-2">Update your service category information</p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <form th:action="@{/supplier/categories/{id}/edit(id=${id})}" th:object="${categorieForm}" method="post">
+                <!-- Category Name Input -->
+                <div class="mb-6">
+                    <label for="nom" class="block text-gray-700 font-bold mb-2">
+                        <i class="fas fa-tag text-orange-500 mr-2"></i>Category Name
+                    </label>
+                    <input type="text" id="nom" th:field="*{nom}" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500 transition"
+                           placeholder="e.g., Plumbing, Electrical, Cleaning..."
+                           required>
+                </div>
+
+                <!-- Error Messages -->
+                <div th:if="${#fields.hasErrors('*')}" class="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h3 class="text-red-800 font-semibold mb-2">Please fix the following errors:</h3>
+                    <ul class="text-red-600 text-sm">
+                        <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+
+                <!-- Info Message -->
+                <div class="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p class="text-blue-800 text-sm">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Update the category name and save your changes.
+                    </p>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex gap-4">
+                    <button type="submit" class="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
+                        <i class="fas fa-save mr-2"></i> Save Changes
+                    </button>
+                    <a href="/supplier/categories" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
+                        <i class="fas fa-times mr-2"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Back Link -->
+        <div class="mt-8">
+            <a href="/supplier/categories" class="text-orange-500 hover:text-orange-700 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Categories
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 mt-12 py-8">
+        <div class="max-w-2xl mx-auto px-4 text-center">
+            <p>&copy; 2025 Prestify. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -56,7 +56,7 @@
       <section class="p-4 rounded-lg shadow-md bg-white">
         <div class="max-w-2xl mx-auto">  <!-- Centered form container -->
           <h1 class=" items-center  text-white p-2 rounded active">Submit a Complaint</h1>
-          <form th:action="@{/save}" method="post" th:object="${reclamation}">
+          <form th:action="@{/client/save}" method="post" th:object="${reclamation}">
             <div class="mb-4">
               <label for="firstName" class="block text-gray-700 font-bold mb-2">First Name:</label>
               <input type="text" th:field="*{firstName}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required/>

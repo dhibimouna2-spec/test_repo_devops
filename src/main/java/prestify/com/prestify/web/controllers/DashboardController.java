@@ -188,5 +188,67 @@ public String editOffre(@Valid @ModelAttribute OfferForm offerForm,
         this.categorieService.deleteCategorie(id);
         return "redirect:/admincategories";
     }
-    
+
+    // ============ SUPPLIER CATEGORY MANAGEMENT ============
+    @GetMapping("/supplier/categories")
+    @PreAuthorize("hasRole('SUPPLIER')")
+    public String supplierListCategories(Model model) {
+        List<Categorie> categories = categorieService.getAllCategories();
+        model.addAttribute("categories", categories);
+        return "supplier/categories";
+    }
+
+    @GetMapping("/supplier/category/create")
+    @PreAuthorize("hasRole('SUPPLIER')")
+    public String supplierShowFormForAdd(Model model) {
+        CategorieForm categorieForm = new CategorieForm();
+        model.addAttribute("categorieForm", categorieForm);
+        return "supplier/add-category";
+    }
+
+    @PostMapping("/supplier/category/create")
+    @PreAuthorize("hasRole('SUPPLIER')")
+    public String supplierSaveCategorie(@Valid @ModelAttribute("categorieForm") CategorieForm categorieForm,
+            BindingResult bindingResult, Model model) {
+        if (categorieService.existsByNom(categorieForm.getNom())) {
+            model.addAttribute("categoryExists", true);
+            return "supplier/add-category";
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "supplier/add-category";
+        }
+
+        categorieService.addCategorie(new Categorie(null, categorieForm.getNom()));
+        return "redirect:/supplier/categories";
+    }
+
+    @GetMapping("/supplier/categories/{id}/edit")
+    @PreAuthorize("hasRole('SUPPLIER')")
+    public String supplierUpdateCategorie(@PathVariable Long id, Model model) {
+        Categorie categorie = categorieService.getCategorieById(id);
+        model.addAttribute("categorieForm", new CategorieForm(categorie.getNom()));
+        model.addAttribute("id", categorie.getId());
+        return "supplier/edit-category";
+    }
+
+    @PostMapping("/supplier/categories/{id}/edit")
+    @PreAuthorize("hasRole('SUPPLIER')")
+    public String supplierUpdateCategoriePost(@PathVariable Long id,
+            @Valid @ModelAttribute("categorieForm") CategorieForm categorieForm,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "supplier/edit-category";
+        }
+
+        categorieService.updateCategorie(id, new Categorie(id, categorieForm.getNom()));
+        return "redirect:/supplier/categories";
+    }
+
+    @RequestMapping(path = "supplier/categories/{id}/delete", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('SUPPLIER')")
+    public String supplierDeleteCategory(@PathVariable Long id) {
+        this.categorieService.deleteCategorie(id);
+        return "redirect:/supplier/categories";
+    }
 }
