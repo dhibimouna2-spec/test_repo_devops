@@ -17,8 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.validation.Valid;
 import prestify.com.prestify.business.services.CategorieService;
 import prestify.com.prestify.business.services.OfferService;
+import prestify.com.prestify.business.services.UserService;
+import prestify.com.prestify.business.services.ReclamationService;
 import prestify.com.prestify.dao.entities.Categorie;
 import prestify.com.prestify.dao.entities.Offer;
+import prestify.com.prestify.dao.entities.User;
+import prestify.com.prestify.dao.entities.Reclamation;
 import prestify.com.prestify.web.models.CategorieForm;
 import prestify.com.prestify.web.models.OfferForm;
 
@@ -29,12 +33,17 @@ public class DashboardController {
     public static String uploadDirectory = System.getProperty("user.dir") + "/src/main/resources/static/images";
 
     private final OfferService offerService; 
-    private final CategorieService categorieService; 
+    private final CategorieService categorieService;
+    private final UserService userService;
+    private final ReclamationService reclamationService;
 
-    public DashboardController(OfferService offerService,CategorieService categorieService){ 
+    public DashboardController(OfferService offerService, CategorieService categorieService, 
+                               UserService userService, ReclamationService reclamationService){ 
 
         this.offerService = offerService; 
         this.categorieService = categorieService;
+        this.userService = userService;
+        this.reclamationService = reclamationService;
     }
 
     @GetMapping("/dashboard")
@@ -250,5 +259,72 @@ public String editOffre(@Valid @ModelAttribute OfferForm offerForm,
     public String supplierDeleteCategory(@PathVariable Long id) {
         this.categorieService.deleteCategorie(id);
         return "redirect:/supplier/categories";
+    }
+
+    // ============ ADMIN USER MANAGEMENT ============
+    @GetMapping("/admin/users")
+    public String listUsers(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+        return "admin/users-list";
+    }
+
+    @GetMapping("/admin/users/{id}/toggle")
+    public String toggleUserStatus(@PathVariable Long id) {
+        userService.toggleUserStatus(id);
+        return "redirect:/admin/users";
+    }
+
+    @PostMapping("/admin/users/{id}/delete")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "redirect:/admin/users";
+    }
+
+    // ============ ADMIN SUPPLIER MANAGEMENT ============
+    @GetMapping("/admin/suppliers")
+    public String listSuppliers(Model model) {
+        List<User> suppliers = userService.getUsersByRole(User.Role.SUPPLIER);
+        model.addAttribute("suppliers", suppliers);
+        return "admin/suppliers-list";
+    }
+
+    @GetMapping("/admin/suppliers/{id}/toggle")
+    public String toggleSupplierStatus(@PathVariable Long id) {
+        userService.toggleUserStatus(id);
+        return "redirect:/admin/suppliers";
+    }
+
+    @PostMapping("/admin/suppliers/{id}/delete")
+    public String deleteSupplier(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "redirect:/admin/suppliers";
+    }
+
+    // ============ ADMIN CLAIMS MANAGEMENT ============
+    @GetMapping("/admin/claims")
+    public String listClaims(Model model) {
+        List<Reclamation> claims = reclamationService.getAllReclamations();
+        model.addAttribute("claims", claims);
+        return "admin/claims-list";
+    }
+
+    @GetMapping("/admin/claims/{id}")
+    public String viewClaim(@PathVariable Long id, Model model) {
+        Reclamation claim = reclamationService.getReclamationById(id);
+        model.addAttribute("claim", claim);
+        return "admin/claim-details";
+    }
+
+    @PostMapping("/admin/claims/{id}/respond")
+    public String respondToClaim(@PathVariable Long id, @RequestParam String response) {
+        reclamationService.respondToReclamation(id, response);
+        return "redirect:/admin/claims";
+    }
+
+    @PostMapping("/admin/claims/{id}/delete")
+    public String deleteClaim(@PathVariable Long id) {
+        reclamationService.deleteReclamation(id);
+        return "redirect:/admin/claims";
     }
 }

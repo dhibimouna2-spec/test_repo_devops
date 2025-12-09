@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import prestify.com.prestify.dao.entities.User;
 import prestify.com.prestify.dao.repositories.UserRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
@@ -52,5 +54,28 @@ public class UserService implements UserDetailsService {
             admin.setEnabled(true);
             userRepository.save(admin);
         }
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public List<User> getUsersByRole(User.Role role) {
+        return userRepository.findByRole(role);
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + id));
+    }
+
+    public void toggleUserStatus(Long id) {
+        User user = getUserById(id);
+        user.setEnabled(!user.isEnabled());
+        userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 }

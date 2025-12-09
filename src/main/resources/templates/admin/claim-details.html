@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Details - Prestify Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f5f7;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .sidebar {
+            background-color: #1c355a;
+            color: white;
+            height: 100vh;
+            width: 280px;
+            padding: 20px;
+            transition: width 0.3s;
+            overflow-y: auto;
+        }
+
+        .sidebar:hover {
+            width: 320px;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s, padding-left 0.3s;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar a:hover {
+            background-color: #2f4d7d;
+            padding-left: 15px;
+        }
+
+        .sidebar a.active {
+            background-color: #3b5998;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #3b5998;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2f4d7d;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #229954;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-responded {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3b5998;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 150px;
+        }
+
+        .info-value {
+            color: #333;
+            flex: 1;
+        }
+
+        .content-box {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3b5998;
+            margin: 10px 0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b5998;
+            box-shadow: 0 0 5px rgba(59, 89, 152, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">Prestify Admin</div>
+        <a href="/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="/admin/users"><i class="fas fa-users"></i> Users</a>
+        <a href="/admin/suppliers"><i class="fas fa-user-tie"></i> Suppliers</a>
+        <a href="/adminofferslist"><i class="fas fa-gift"></i> Offers</a>
+        <a href="/admincategories"><i class="fas fa-layer-group"></i> Categories</a>
+        <a href="/admin/claims" class="active"><i class="fas fa-file-alt"></i> Claims</a>
+        <a href="/"><i class="fas fa-home"></i> Home Page</a>
+        <hr class="my-4" style="border-top: 1px solid #4a6fa5;">
+        <form action="/logout" method="post" style="display:block;">
+            <button type="submit" style="width: 100%; text-align: left; color: #ff6b6b; background: none; border: none; cursor: pointer; padding: 10px; border-radius: 8px; font-size: 1rem; transition: background 0.3s;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold">Claim Details</h1>
+            <a href="/admin/claims" class="btn btn-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Claims
+            </a>
+        </div>
+
+        <!-- Claim Information -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle mr-2"></i>Claim Information
+            </h2>
+
+            <div class="info-row">
+                <div class="info-label">Claim ID:</div>
+                <div class="info-value" th:text="'#' + ${claim.id}">ID</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">Status:</div>
+                <div class="info-value">
+                    <span class="status-badge" 
+                          th:classappend="${claim.statut == 'répondu' ? 'status-responded' : 'status-pending'}"
+                          th:text="${claim.statut == 'répondu' ? 'Responded' : 'Pending'}">
+                        Pending
+                    </span>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">Submitted Date:</div>
+                <div class="info-value" th:text="${#dates.format(claim.dateCreation, 'dd/MM/yyyy HH:mm:ss')}">Date</div>
+            </div>
+        </div>
+
+        <!-- User Information -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="fas fa-user mr-2"></i>Submitter Information
+            </h2>
+
+            <div class="info-row">
+                <div class="info-label">Full Name:</div>
+                <div class="info-value" th:text="${claim.firstName + ' ' + claim.lastName}">User Name</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">Email:</div>
+                <div class="info-value">
+                    <a th:href="'mailto:' + ${claim.email}" th:text="${claim.email}">email@example.com</a>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">Claim Title:</div>
+                <div class="info-value" th:text="${claim.titre}">Claim Title</div>
+            </div>
+        </div>
+
+        <!-- Claim Message -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="fas fa-comment-dots mr-2"></i>Claim Message
+            </h2>
+
+            <div class="content-box">
+                <p th:text="${claim.message}">No message provided</p>
+            </div>
+        </div>
+
+        <!-- Admin Response -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="fas fa-reply mr-2"></i>Admin Response
+            </h2>
+
+            <div th:if="${claim.reponseAdmin}" class="content-box" style="background-color: #e8f5e9; border-left-color: #27ae60;">
+                <p th:text="${claim.reponseAdmin}">Response text</p>
+            </div>
+
+            <div th:unless="${claim.reponseAdmin}" class="content-box" style="background-color: #f0f0f0; border-left-color: #95a5a6;">
+                <p style="color: #666; font-style: italic;">No response provided yet. Use the form below to respond to this claim.</p>
+            </div>
+
+            <!-- Response Form (only if not already responded) -->
+            <div th:if="${claim.statut != 'répondu'}" style="margin-top: 20px;">
+                <form th:action="'/admin/claims/' + ${claim.id} + '/respond'" method="post">
+                    <div class="mb-4">
+                        <label for="response" style="display: block; font-weight: bold; margin-bottom: 8px; color: #333;">
+                            <i class="fas fa-pen mr-2"></i>Write Your Response:
+                        </label>
+                        <textarea id="response" name="response" placeholder="Enter your response to this claim..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-check mr-2"></i>Submit Response
+                    </button>
+                </form>
+            </div>
+
+            <div th:if="${claim.statut == 'répondu'}" style="padding: 15px; background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 6px; margin-top: 20px;">
+                <i class="fas fa-check-circle mr-2" style="color: #155724;"></i>
+                <span style="color: #155724; font-weight: bold;">This claim has already been responded to.</span>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="card flex gap-3">
+            <a href="/admin/claims" class="btn btn-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Claims
+            </a>
+            <form th:action="'/admin/claims/' + ${claim.id} + '/delete'" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this claim? This action cannot be undone.');">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash mr-2"></i>Delete Claim
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -145,14 +145,22 @@
 
 <body>
     <!-- Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">Prestify Admin</div>
-        <a href="#" ><i class="fas fa-users"></i> Users</a>
-        <a href="#"><i class="fas fa-user-friends"></i> Suppliers</a>
-        <a href="#" class="active"><i class="fas fa-gift"></i> Offers</a>
-        <a href="#"><i class="fas fa-layer-group"></i> Categories</a>
-        <a href="#"><i class="fas fa-file-alt"></i> Claims</a>
-        <a href="#"><i class="fas fa-envelope"></i> Demandes</a>
+        <a href="/dashboard" ><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="/admin/users"><i class="fas fa-users"></i> Users</a>
+        <a href="/admin/suppliers"><i class="fas fa-user-tie"></i> Suppliers</a>
+        <a href="/adminofferslist" class="active"><i class="fas fa-gift"></i> Offers</a>
+        <a href="/admincategories"><i class="fas fa-layer-group"></i> Categories</a>
+        <a href="/admin/claims"><i class="fas fa-file-alt"></i> Claims</a>
+        <a href="/"><i class="fas fa-home"></i> Home Page</a>
+        <hr class="my-4" style="border-top: 1px solid #4a6fa5;">
+        <form action="/logout" method="post" style="display:block;">
+            <button type="submit" style="width: 100%; text-align: left; color: #ff6b6b; background: none; border: none; cursor: pointer; padding: 10px; border-radius: 8px; font-size: 1rem; transition: background 0.3s;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </form>
     </div>
 
   <!-- Main Content -->
