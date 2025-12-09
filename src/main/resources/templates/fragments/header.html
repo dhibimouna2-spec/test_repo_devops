@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"></script>
+<link href="\CSS\style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="custom-navbar bg-white shadow">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div class="relative flex items-center justify-between h-16">
+            <div class="flex-1 flex items-center justify-start">
+              <img class="h-8 w-auto" src="images/Logo_Orange.png" alt="Logo">
+              <a href="index" class="nav-link name font-bold text-xl ml-2">Prestify</a> 
+            </div>
+            <div class="flex space-x-4"> 
+              <a href="index" class="nav-link home px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              <a href="#" class="nav-link services px-3 py-2 rounded-md text-sm font-medium active-link">Services</a>
+              <a href="AboutUs" class="nav-link about-us px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+              <a href="signin" class="nav-link sign-in px-3 py-2 rounded-md text-sm font-medium">Sign In</a> 
+              <a href="signup" class="nav-link sign-up px-3 py-2 rounded-md text-sm font-medium">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </nav> 
+      <h1 class="container" th:text="${title}">Default title</h1>    
+</body>
+</html>

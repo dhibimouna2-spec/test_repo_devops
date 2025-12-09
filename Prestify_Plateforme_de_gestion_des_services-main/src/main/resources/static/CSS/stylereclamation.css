@@ -1,0 +1,286 @@
+
+.form-container {
+            
+ /* Add top margin to separate from navbar */
+    border: 1px solid #0d023c;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Or max-width */
+
+
+        }
+      .form-container div{
+          margin-bottom: 5px;
+      }
+     textarea:hover{
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+    h1:hover{
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+     input:hover{
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+     button:hover{
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+      label {
+            color:#1c355a;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+        button[type="submit"] {
+            background-color: #f8de4a; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 0;
+            cursor: pointer;
+            border-radius: 4px;
+
+
+        }
+
+
+
+.form-container h1 {
+    color: #1c355a;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: large;
+font-style: italic;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-weight: bold;
+}
+
+/* Add to your existing CSS */
+.active { /* Style for the active service */
+    background-color: #1c355a;; /* Or your preferred orange/yellow */
+    color: white !important; /* Ensure white text */
+}
+
+
+aside ul li { /* Consistent hover effect and padding */
+  padding: 1.0rem 10rem; /* Consistent padding */
+  border-radius: 0.375rem; /* Rounded corners for all items */
+  transition: background-color 0.2s; /* Smooth hover transition */
+}
+
+aside ul li:hover {
+  background-color: #f3f4f6; /* Light gray hover */
+}
+
+aside ul li a {  /* Prevent link color change on hover */
+    color: inherit;  /* Inherit the color from the parent <li> */
+}
+
+.text-white { /* If not provided by Tailwind */
+    color: white;
+}
+.container {
+    
+    width: 30%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #1c355a;
+    margin-bottom: 20px;
+    text-align: center;
+    font-style: italic;
+font-weight: bolder;
+}
+
+table {
+    width: 500%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #0056b3;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.delete {
+    background-color: #dc3545;
+}
+
+.delete:hover {
+    background-color: #c82333;
+}
+
+.cancel {
+    background-color: #6c757d;
+}
+
+.cancel:hover {
+    background-color: #5a6268;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+main {
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 25%;
+    text-align: center;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.card p {
+    font-size: 2rem;
+    color: #007BFF;}
+
+.custom-navbar {
+
+    background-color: #e0e0e0;
+}
+
+/* Change navbar link color */
+.nav-link {
+    color: #333; /* Adjust as needed */
+}
+
+.nav-link:hover {
+    color: #000; /* Darker on hover */
+}
+
+.nav-link {
+    color: #ffffff;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #b3c7e6; 
+  }
+
+  .active-link {
+    color: #1c355a; 
+    font-weight: bold;
+    border-bottom: 2px solid #1c355a; }
+/* styles.css */
+.nav-link {
+    color: #1C355A; /* Couleur par défaut pour les liens */
+}
+
+.nav-link.home {
+    color: #1C355A; /* Couleur spécifique pour "Home" */
+}
+
+.nav-link.services {
+    color: #1C355A; /* Couleur pour "Services" */
+}
+.nav-link.name {
+    color: #1c355a; /* Couleur pour "About Us" */
+}
+.nav-link.about-us {
+    color: #1C355A; /* Couleur pour "About Us" */
+}
+
+.nav-link.sign-in,
+.nav-link.sign-up {
+    color: #1C355A; /* Couleur pour "Sign In" et "Sign Up" */
+}
+
+.nav-link:hover {
+    color: #1c355a; /* Couleur au survol */
+}

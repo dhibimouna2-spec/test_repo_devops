@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Offres</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"> </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <link rel="stylesheet" href="/css/style2.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="/CSS/style.css" rel="stylesheet">
+ <link href="/CSS/style2.css" rel="stylesheet">
+        
+    <script>
+        function sortPrice(order) {
+            document.getElementById('sortByPrix').value = order;
+            document.getElementById('filterFormPrice').submit();
+        }  
+
+        function submitSearch() {
+            var form = document.getElementById('searchForm');
+            form.submit();
+        }
+    
+        document.getElementById('searchInput')?.addEventListener('keyup', function () {
+            submitSearch();
+        });   
+    </script>
+    <style>
+                body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Assure que le corps occupe toute la hauteur de l'écran */
+    }
+
+    header, footer {
+        flex-shrink: 0; /* Ne rétrécit pas dans le modèle flex */
+    }
+
+    main {
+        flex-grow: 1; /* Prend tout l'espace disponible */
+    }
+
+    footer {
+        background-color: #1C355A;
+        color: #fff;
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 30px;
+    }
+
+    footer a {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    footer a:hover {
+        color: #ddd;
+    }
+
+        .container {
+            margin-top: 30px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            transition: transform 0.3s ease;
+        }
+
+        .card img:hover {
+            transform: scale(1.1);
+        }
+
+        .btn {
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: #ffffff;
+            background-color: #2980b9;
+            box-shadow : 0.3s;
+        }
+
+        .btn-warning {
+            background: #fdcb6e;
+            color: white;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background: #e17055;
+        }
+
+        .btn-danger {
+            background: #d63031;
+            color: white;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-link {
+            background: #2980b9;
+            color: white;
+            border: none; 
+            text-decoration: none;
+        }
+
+        .btn-link:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-link:active {
+            transform: translateY(2px);
+        }
+
+        .btn-link i {
+            margin-right: 8px; 
+        } 
+      
+    </style> 
+</head>
+<body> 
+  <nav class="custom-navbar">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <div class="flex-1 flex items-center justify-start">
+          <img class="h-8 w-auto" src="/images/Logo_Orange.png" alt="Logo">
+          <a href="#" class="nav-link name font-bold text-xl ml-4">Supplier Dashboard</a>
+        </div>
+        <div class="flex space-x-4"> 
+         <a href="/index" class="nav-link home px-3 py-2 rounded-md text-sm font-medium active-link">Home</a>
+
+
+         <a href="/fournisseurindex" class="nav-link sign-up px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+         <a href="/offers" class="nav-link sign-in px-3 py-2 rounded-md text-sm font-medium">Offers</a> 
+         <a href="/categories" class="nav-link sign-up px-3 py-2 rounded-md text-sm font-medium">Categories</a>
+         
+        
+        </div>
+
+      </div>
+    </div>
+  </nav>  
+<div class="container">   
+    <a th:href="@{/fournisseurindex}"class="btn btn-link">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
+    <a th:href="@{/offers/create}" class="btn btn-success">
+       <i class="fas fa-plus"></i> 
+      New offer
+    </a> 
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <form th:action="@{/offers/filtrer/location}" id="searchForm" method="get" class="d-flex">
+                <input type="text" name="location" class="form-control me-2" placeholder="Search by location..." aria-label="Search by location">
+                <button type="submit" class="btn btn-primary"> <i class="fas fa-search"></i> Search </button>
+            </form>
+        </div>
+    </div>
+    <h1 class="text-center mb-4 fade-in">Offers List</h1> 
+    
+    <!-- Liste des offres -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Message si aucune offre n'est trouvée -->
+        <div th:if="${#lists.isEmpty(offers)}" class="col-12 text-center">
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-circle"></i> No offers found.
+            </div>
+        </div>
+
+        <!-- Affichage des offres -->
+        <div th:each="offer : ${offers}" class="col fade-in" style="animation-delay: calc(0.3s + (0.1s * ${offerStat.index}))">
+            <div class="card"> 
+                <img th:src="@{${offer.image}}" alt="Offer Image" class="logement-img">
+                <div class="card-body"> 
+                    <strong>Title:</strong> <span th:text="${offer.title}"></span><br>
+                    <strong>Description:</strong> 
+                    <span th:text="${#strings.substring(offer.description, 0, 20)} + '...'"></span><br>
+                    <form th:action="@{/offers/filtrer}" method="get" id="filterFormPrice" style="display: inline;">
+                        <input type="hidden" id="sortByPrix" name="sortByPrix" value="${sortByPrix}">
+                        <label class="arrow-icons" onclick="sortPrice('desc')">
+                            <i class="fas fa-arrow-up"></i>
+                        </label>
+                        <label class="arrow-icons" onclick="sortPrice('asc')">
+                            <i class="fas fa-arrow-down"></i>
+                        </label> 
+                        <strong>Price:</strong> 
+                    </form> 
+                    <span th:text="${offer.price} + ' DT'"></span><br>
+                    <strong>Duration:</strong> <span th:text="${offer.duration} + ' H'"></span><br>
+                    <strong>Category:</strong> <span th:text="${offer.category != null ? offer.category.nom : 'Non définie'}"></span><br>
+                    <strong>Location:</strong> <span th:text="${offer.location}"></span><br>
+                    <strong>Status:</strong> <span th:text="${offer.status}"></span>
+                </div>
+                <div class="card-footer">
+                    <a th:href="@{|/offers/${offer.id}/edit|}" class="btn btn-warning">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <form th:action="@{|/offers/${offer.id}/delete|}" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button> 
+                    </form> 
+                  <a th:href="@{|/offer/${offer.id}|}" class="btn btn-link"> <i class="fas fa-ellipsis-h"></i>More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <footer>
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; Prestify. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-2">
+                <a href="privacy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                <a href="terms.html" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                <a href="contact.html" class="text-gray-400 hover:text-white text-sm">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="/CSS/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <img src="/images/box.gif" alt="Animated Icon">
+            <h3>Edit Category</h3>
+        </div>
+
+        <!-- Afficher un message si la catégorie existe déjà -->
+        <div th:if="${categoryExists}" class="alert alert-warning">
+            <strong>Warning!</strong> The category already exists.
+        </div>
+        <form th:action="@{|/categories/${id}/edit|}" method="POST" th:object="${categorieForm}">
+            <!-- Titre de la catégorie -->
+            <div class="mb-4">
+                <img src="/images/idea.gif" alt="Animated Icon">
+                <label for="category" class="form-label">Category</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-heading"></i></span>
+                    <!-- Remplir le champ avec la catégorie existante -->
+                    <input type="text" class="form-control" id="category" th:field="*{nom}" required>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-secondary col-5 text-center">
+                    <i class="fa fa-save mr-2"></i> Save
+                </button>
+                <a href="/admincategories" class="btn btn-secondary col-5 text-center">
+                    <i class="fa fa-angles-left mr-2"></i> Back
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

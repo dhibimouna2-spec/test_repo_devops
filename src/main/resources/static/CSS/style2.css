@@ -1,0 +1,185 @@
+
+.pricing-container {
+    display: flex; /* Utilisez flexbox pour un meilleur alignement */
+    justify-content: center; /* Centre les bulles */
+    flex-wrap: wrap; /* Permet de passer à la ligne suivante si l'espace est insuffisant */
+    gap: 20px; /* Espace entre les bulles */
+    width: 80%; /* Largeur du conteneur */
+    margin: 0 auto; /* Centre le conteneur */
+    padding: 40px; /* Espacement intérieur */
+    background-color: #f9f9f9; /* Couleur de fond */
+    text-align: center; /* Aligne le texte au centre */
+}
+
+.plan {
+    border: 1px solid #E0E0E0; /* Bordure */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement intérieur */
+    width: 220px; /* Largeur fixe pour toutes les bulles */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre portée */
+    display: flex; /* Utilise flexbox pour aligner les éléments */
+    flex-direction: column; /* Aligne les éléments verticalement */
+    justify-content: space-between; /* Équilibre l'espace entre les éléments */
+    min-height: 300px; /* Hauteur minimale pour uniformiser les bulles */
+    transition: transform 0.3s; /* Animation pour l'effet au survol */
+}
+
+.plan:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
+.plan h3 {
+    color: #f95a04; /* Couleur du titre */
+}
+
+.price {
+    font-size: 1.5em; /* Taille de la police pour le prix */
+    font-weight: bold; /* Texte en gras */
+    color: #e0e0e0; }
+
+.plan-image {
+    width: 100%; 
+    height: auto; 
+}
+
+.plan ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 10px 0;}
+
+.plan ul li {
+    padding: 5px 0; 
+}
+
+.plan a {
+    display: inline-block; 
+    margin-top: auto; 
+    padding: 10px 20px; 
+    background-color: #F16821; 
+    color: #1C355A; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+}
+
+.plan a:hover {
+    background-color: #e0e0e0; 
+}  
+
+.plan h3 {
+    font-size: 1.5em;
+    color: #F16821;
+    margin-bottom: 10px;
+}
+
+
+
+.service-description {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+    font-family: 'Arial', sans-serif;
+}
+
+.service-description::first-line {
+    font-weight: bold;
+    
+}
+
+.service-description span.highlight {
+    font-weight: bold;
+  
+    font-style: italic;
+}
+
+.service-description {
+    background: #f9f9f9;
+    padding: 15px;
+   
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Custom navbar background color */
+.custom-navbar {
+    background-color: #1C355A;
+}
+
+/* Change navbar link color */
+.nav-link {
+    color: #333; /* Adjust as needed */
+}
+
+.nav-link:hover {
+    color: #000; /* Darker on hover */
+}
+
+.nav-link {
+    color: #ffffff;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #b3c7e6; 
+  }
+
+  .active-link {
+    color: #ffde59; 
+    font-weight: bold;
+    border-bottom: 2px solid #ffde59; }
+/* styles.css */
+.nav-link {
+    color: #ffffff; /* Couleur par défaut pour les liens */
+}
+
+.nav-link.home {
+    color: #ffffff; /* Couleur spécifique pour "Home" */
+}
+
+.nav-link.services {
+    color:#ffffff; /* Couleur pour "Services" */
+}
+.nav-link.name {
+    color: #ffffff; /* Couleur pour "About Us" */
+}
+.nav-link.about-us {
+    color:#ffffff; /* Couleur pour "About Us" */
+}
+
+.nav-link.sign-in,
+.nav-link.sign-up {
+    color: #ffffff; /* Couleur pour "Sign In" et "Sign Up" */
+}
+
+.nav-link:hover {
+    color: #FFD700; /* Couleur au survol */
+}
+
+/* Personnaliser la couleur de l'élément actif */
+.active {
+    background-color:  #fae676; /* Couleur or */
+    border-color: #FFC107; /* Optionnel : changer aussi la couleur de la bordure */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Légère élévation */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre pour donner l'effet de profondeur */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card img {
+    transition: transform 0.3s ease;
+  }
+
+  /* Ajout d'un zoom sur l'image au survol */
+  .card:hover img {
+    transform: scale(1.05); /* Zoom de 5% sur l'image */
+  } 
+
+  .card-sh { 
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.3) !important;
+}
+
+  .cat-div{
+    box-shadow: 0 0 10px rgba(0,0,0, .1);
+  }

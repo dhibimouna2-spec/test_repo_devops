@@ -1,0 +1,429 @@
+body {
+    background: url('https://source.unsplash.com/1920x1080/?service,work') no-repeat center center/cover;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.6s ease-in-out;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+
+
+.form-container  img {
+    max-width: 100px;
+    height: auto;
+}
+
+.mb-4 img {
+    max-width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.d-grid img {
+    max-width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #375ab9;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pricing-container {
+    display: flex; /* Utilisez flexbox pour un meilleur alignement */
+    justify-content: center; /* Centre les bulles */
+    flex-wrap: wrap; /* Permet de passer à la ligne suivante si l'espace est insuffisant */
+    gap: 20px; /* Espace entre les bulles */
+    width: 80%; /* Largeur du conteneur */
+    margin: 0 auto; /* Centre le conteneur */
+    padding: 40px; /* Espacement intérieur */
+    background-color: #f9f9f9; /* Couleur de fond */
+    text-align: center; /* Aligne le texte au centre */
+}
+
+.plan {
+    border: 1px solid #E0E0E0; /* Bordure */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement intérieur */
+    width: 220px; /* Largeur fixe pour toutes les bulles */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre portée */
+    display: flex; /* Utilise flexbox pour aligner les éléments */
+    flex-direction: column; /* Aligne les éléments verticalement */
+    justify-content: space-between; /* Équilibre l'espace entre les éléments */
+    min-height: 300px; /* Hauteur minimale pour uniformiser les bulles */
+    transition: transform 0.3s; /* Animation pour l'effet au survol */
+}
+
+.plan:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
+.plan h3 {
+    color: #f95a04; /* Couleur du titre */
+}
+
+.price {
+    font-size: 1.5em; /* Taille de la police pour le prix */
+    font-weight: bold; /* Texte en gras */
+    color: #e0e0e0; }
+
+.plan-image {
+    width: 100%; 
+    height: auto; 
+}
+
+.plan ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 10px 0;}
+
+.plan ul li {
+    padding: 5px 0; 
+}
+
+.plan a {
+    display: inline-block; 
+    margin-top: auto; 
+    padding: 10px 20px; 
+    background-color: #F16821; 
+    color: #1C355A; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+}
+
+.plan a:hover {
+    background-color: #e0e0e0; 
+}  
+
+.plan h3 {
+    font-size: 1.5em;
+    color: #F16821;
+    margin-bottom: 10px;
+}
+
+
+
+.service-description {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+    font-family: 'Arial', sans-serif;
+}
+
+.service-description::first-line {
+    font-weight: bold;
+    
+}
+
+.service-description span.highlight {
+    font-weight: bold;
+  
+    font-style: italic;
+}
+
+.service-description {
+    background: #f9f9f9;
+    padding: 15px;
+   
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Custom navbar background color */
+.custom-navbar {
+    background-color: #e0e0e0;
+}
+
+/* Change navbar link color */
+.nav-link {
+    color: #333; /* Adjust as needed */
+}
+
+.nav-link:hover {
+    color: #000; /* Darker on hover */
+}
+
+.nav-link {
+    color: #ffffff;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #b3c7e6; 
+  }
+
+  .active-link {
+    color: #ffde59; 
+    font-weight: bold;
+    border-bottom: 2px solid #ffde59; }
+/* styles.css */
+.nav-link {
+    color: #1C355A; /* Couleur par défaut pour les liens */
+}
+
+.nav-link.home {
+    color: #1C355A; /* Couleur spécifique pour "Home" */
+}
+
+.nav-link.services {
+    color: #1C355A; /* Couleur pour "Services" */
+}
+.nav-link.name {
+    color: #F16821; /* Couleur pour "About Us" */
+}
+.nav-link.about-us {
+    color: #1C355A; /* Couleur pour "About Us" */
+}
+
+.nav-link.sign-in,
+.nav-link.sign-up {
+    color: #1C355A; /* Couleur pour "Sign In" et "Sign Up" */
+}
+
+.nav-link:hover {
+    color: #FFD700; /* Couleur au survol */
+}
+
+/* Personnaliser la couleur de l'élément actif */
+.active {
+    background-color: #FFC107; /* Couleur or */
+    border-color: #FFC107; /* Optionnel : changer aussi la couleur de la bordure */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Légère élévation */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre pour donner l'effet de profondeur */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card img {
+    transition: transform 0.3s ease;
+  }
+
+  /* Ajout d'un zoom sur l'image au survol */
+  .card:hover img {
+    transform: scale(1.05); /* Zoom de 5% sur l'image */
+  } 
+
+  .card-sh { 
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.3) !important;
+}
+
+  .cat-div{
+    box-shadow: 0 0 10px rgba(0,0,0, .1);
+  }  
+
+  /* Custom footer styles */
+  footer {
+    background-color: #212529;
+    color: #f8f9fa;
+    padding: 40px 0;
+}
+footer h5 {
+    font-weight: 700;
+    color: #f8f9fa;
+    font-size: 1.1rem;
+}
+footer p {
+    color: #f8f9fa;
+}
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+.social-icons a {
+    color: #f8f9fa;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+.social-icons a:hover {
+    color: #1e7e34;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.footer-bottom p {
+    margin: 0;
+} 
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    background-color: #1C355A;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.header-container nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header-container nav ul li {
+    margin: 0 15px;
+}
+
+.header-container nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header-container nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-header img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.form-header h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.footer-container {
+    background-color: #1C355A;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.btn-secondary {
+    background-color: #1C355A;
+    color: #fff;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #142742;
+}
+
+header {
+    background-color: #1C355A;
+    color: white;
+    padding: 15px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+} 
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.text-center {
+    text-align: center;
+}
+.fs-3 {
+    font-size: 1.75rem;
+    margin-top: 20px;
+    color: #333;
+}
+.card-body {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+.card-body:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+.fa-2x {
+    color: #1C355A;
+    margin-bottom: 15px;
+}
+.fs-5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1C355A;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.col-md-4 {
+    flex: 1 1 calc(50% - 20px); /* Display 2 items per row with some space */
+    margin: 10px;
+    max-width: 45%;
+}
+.col-md-4 a {
+    text-decoration: none;
+}
+
+.row-cols-md-3 .col {
+    margin-bottom: 20px; /* Réduisez la marge entre les colonnes si nécessaire */
+}
+.card {
+    min-height: 350px; /* Ajustez la valeur selon vos besoins */
+}

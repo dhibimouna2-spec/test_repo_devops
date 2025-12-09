@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Réclamations</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1 class="text-center text-3xl font-bold my-5">Liste des Réclamations</h1>
+
+    <table class="table-auto border-collapse border border-gray-400 w-full text-center mb-5">
+        <thead class="bg-gray-200">
+            <tr>
+                <th class="border border-gray-300 px-4 py-2">ID</th>
+                <th class="border border-gray-300 px-4 py-2">Titre</th>
+                <th class="border border-gray-300 px-4 py-2">Date</th>
+                <th class="border border-gray-300 px-4 py-2">Statut</th>
+                <th class="border border-gray-300 px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="reclamation : ${reclamations}">
+                <td th:text="${reclamation.id}" class="border border-gray-300 px-4 py-2"></td>
+                <td th:text="${reclamation.titre}" class="border border-gray-300 px-4 py-2"></td>
+                <td th:text="${reclamation.dateReclamation}" class="border border-gray-300 px-4 py-2"></td>
+                <td th:text="${reclamation.statut}" class="border border-gray-300 px-4 py-2"></td>
+                <td class="border border-gray-300 px-4 py-2">
+                    <button th:onclick="'showDetails(' + ${reclamation.id} + ')'" class="text-blue-500 underline cursor-pointer">Voir</button> |
+                    <form th:action="@{/reclamations/traiter/{id}(id=${reclamation.id})}" method="post" class="inline">
+                        <button type="submit" class="text-green-500 underline">Traiter</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal for showing Reclamation Details -->
+    <div id="reclamationDetailsModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg w-1/3">
+            <h2 class="text-xl font-semibold mb-4">Détails de la Réclamation</h2>
+            <p><strong>ID : </strong><span id="reclamationId"></span></p>
+            <p><strong>Titre : </strong><span id="reclamationTitre"></span></p>
+            <p><strong>Description : </strong><span id="reclamationDescription"></span></p>
+            <p><strong>Date : </strong><span id="reclamationDate"></span></p>
+            <p><strong>Statut : </strong><span id="reclamationStatut"></span></p>
+            <form th:action="@{/reclamations/traiter/{id}(id=${reclamation.id})}" method="post">
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Marquer comme Traité</button>
+            </form>
+            <button id="closeModal" class="mt-4 text-red-500">Fermer</button>
+        </div>
+    </div>
+
+    <script>
+        // Show the modal with the details of a reclamation
+        function showDetails(id) {
+            // Fetch reclamation details using JavaScript (you may want to load these details dynamically with an API or Thymeleaf)
+            /* Your logic to get reclamation details by ID (e.g., make an AJAX call) */;
+            document.getElementById('reclamationId').innerText = reclamationDetails.id;
+            document.getElementById('reclamationTitre').innerText = reclamationDetails.titre;
+            document.getElementById('reclamationDescription').innerText = reclamationDetails.description;
+            document.getElementById('reclamationDate').innerText = reclamationDetails.dateReclamation;
+            document.getElementById('reclamationStatut').innerText = reclamationDetails.statut;
+
+            // Show the modal
+            document.getElementById('reclamationDetailsModal').classList.remove('hidden');
+        }
+
+        // Close the modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('reclamationDetailsModal').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

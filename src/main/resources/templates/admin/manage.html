@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gérer la réclamation</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Réclamation - ID: <span th:text="${reclamation.id}"></span></h1>
+
+    <h2>Réponse</h2>
+    <form th:action="@{/reclamations/admin/{id}/respond(id=${reclamation.id})}" method="post">
+        <textarea name="reponseAdmin" required></textarea><br>
+        <button type="submit">Répondre</button>
+    </form>
+
+    <p>Statut: <span th:text="${reclamation.statut}"></span></p>
+    <p>Réponse de l'admin: <span th:text="${reclamation.reponseAdmin}"></span></p>
+</body>
+</html>

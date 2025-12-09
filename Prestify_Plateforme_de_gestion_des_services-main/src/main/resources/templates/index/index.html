@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page avec Image de Plombier</title>
+    <link rel="stylesheet" href="/css/style2.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    
+  <nav class="custom-navbar">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <div class="flex-1 flex items-center justify-start">
+          <img class="h-8 w-auto" src="images/Logo_Orange.png" alt="Logo">
+          <a href="index" class="nav-link name font-bold text-xl ml-4">Prestify</a>
+        </div>
+        <div class="flex space-x-4"> 
+         <a href="#" class="nav-link home px-3 py-2 rounded-md text-sm font-medium active-link">Home</a>
+         <a href="/client/offers" class="nav-link services px-3 py-2 rounded-md text-sm font-medium">Services</a>
+         <a href="AboutUs" class="nav-link about-us px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+         <a href="create" class="nav-link sign-up px-3 py-2 rounded-md text-sm font-medium">Claims</a>
+         <a href="signin" class="nav-link sign-in px-3 py-2 rounded-md text-sm font-medium">Sign In</a> 
+         <a href="signup" class="nav-link sign-up px-3 py-2 rounded-md text-sm font-medium">Sign Up</a>
+         <a href="service-cart" class="nav-link cart px-3 py-2 rounded-md text-sm font-medium flex items-center">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="ml-2">Card</span>
+        </a>
+        </div>
+
+      </div>
+    </div>
+  </nav>  
+<section class="bg-cover bg-center from-navy-800 to-navy-600  py-20" style="background-image: url('images/cnn.jpg');">
+    <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-18 text-center">
+        <h1 class="text-5xl font-bold text-navy-1000">Welcome to Prestify</h1>
+        <p class="mt-8 text-xl text-navy-1000">The ultimate platform to manage your services effortlessly.</p>
+        <div class="mt-8 flex justify-center space-x-6">
+            <a href="/services" class="px-12 py-8 bg-transparent text-navy-1000 border-2 border-navy-1000 font-bold text-lg rounded-lg hover:bg-gray-200">Client Area</a>
+            <a href="/fournisseurindex" class="px-12 py-8 bg-transparent text-navy-1000 border-2 border-navy-1000 font-bold text-lg rounded-lg hover:bg-gray-200">Supplier Area</a>
+        </div>
+    </div>
+</section>
+
+<section style="background-color: #1c355a; color: white; padding: 5rem 0;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold">Our Services</h2>
+        <p class="mt-4 text-xl text-gray-300">Explore a variety of services tailored to your needs.</p>
+
+        <!-- Carrousel -->
+        <div class="carousel-container mt-8 relative">
+            <!-- Images -->
+            <div class="carousel-images overflow-hidden relative whitespace-nowrap">
+                <img src="images/drive.png" alt="Service 1" class="inline-block w-full">
+                <img src="images/electrician.png" alt="Service 2" class="inline-block w-full">
+                <img src="images/maintenance.jpg" alt="Service 3" class="inline-block w-full">
+                <!-- Add more images as needed -->
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="dots-navigation absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <span class="dot w-4 h-4 bg-gray-500 rounded-full cursor-pointer"></span>
+                <span class="dot w-4 h-4 bg-gray-500 rounded-full cursor-pointer"></span>
+                <span class="dot w-4 h-4 bg-gray-500 rounded-full cursor-pointer"></span>
+                <!-- Add more dots as needed -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .carousel-images img {
+        display: inline-block;
+    }
+    .dots-navigation .dot.active {
+        background-color: #FFD700;
+    }
+</style>
+
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel-images img');
+    const dots = document.querySelectorAll('.dots-navigation .dot');
+
+    function showImage(index) {
+        images.forEach((img, i) => img.style.transform = `translateX(${-100 * index}%)`);
+        dots.forEach((dot, i) => dot.classList.remove('active'));
+
+        dots[index].classList.add('active');
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            showImage(currentIndex);
+        });
+    });
+
+    setInterval(nextImage, 2000); // Change image every 5 seconds
+</script>
+
+
+  
+ <footer class="bg-gray-800 text-white py-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; Prestify. All rights reserved.</p>
+      <div class="flex justify-center space-x-6 mt-2">
+        <a href="privacy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+        <a href="terms.html" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+        <a href="contact.html" class="text-gray-400 hover:text-white text-sm">Contact</a>
+
+      </div>
+    </div>
+  </footer>  
+
+
+  </body> 
+  </html>
+
